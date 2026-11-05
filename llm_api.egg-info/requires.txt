@@ -1,0 +1,7 @@
+openai
+requests
+python-dotenv
+chonkie
+sentence-transformers
+beautifulsoup4
+numpy

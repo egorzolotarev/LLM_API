@@ -69,3 +69,29 @@ print(answer2[1])
 - При наличии загруженных данных находит 5 наиболее релевантных чанков для переданного `message`.
 - Формирует системный промпт с контекстом и отправляет запрос в LLM.
 - **Возвращает**: `[ответ_модели, использованный_контекст]`.
+
+## Поддержка асинхронности
+Библиотека так же теперь поддерживает асинхронные запросы к LLM, пример:
+```python
+import asyncio
+import os
+
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+
+from llm_api import LLMAPI
+
+async def main():
+    llm_api = LLMAPI()
+    await llm_api.get_rag_from_url("https://neolurk.org/wiki/One_Piece")
+
+    answer1 = await llm_api.send_message("Как ты думаешь, что такое Ван Пис, который все ищут")
+    print(answer1[0])
+    print(answer1[1])
+
+    answer2 = await llm_api.send_message("Что ты знаешь об аниме ДжоДжо")
+    print(answer2[0])
+    print(answer2[1])
+
+asyncio.run(main())
+```
