@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm_api"
+version = "0.1.0"
+description = "Библиотека для RAG-запросов к LLM с парсингом веб-страниц"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "openai",
+    "requests",
+    "python-dotenv",
+    "chonkie",
+    "sentence-transformers",
+    "beautifulsoup4",
+    "numpy"
+]
+
+[tool.setuptools.packages.find]
+include = ["llm_api*"]
